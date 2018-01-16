@@ -1,7 +1,7 @@
 import random
 
 correct = 'you guessed correctly!'
-too_low = 'too low'
+Too_Low = 'too low'
 too_high = 'too high'
 
 
@@ -35,7 +35,7 @@ def main():
 
     (low, high) = configure_range()
     secret = generate_secret(low, high)
-    
+
     guessCount = 0
 
     while True:
