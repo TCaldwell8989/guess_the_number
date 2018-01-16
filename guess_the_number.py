@@ -15,9 +15,10 @@ def generate_secret(low, high):
     return random.randint(low, high)
 
 
-def get_guess():
+def get_guess(guessCount):
     '''get user's guess'''
-    return int(input('Guess the secret number? '))
+    guessCount+= 1
+    return int(input('Guess the secret number? ')), guessCount
 
 
 def check_guess(guess, secret):
@@ -34,22 +35,27 @@ def main():
 
     (low, high) = configure_range()
     secret = generate_secret(low, high)
+    
+    guessCount = 0
 
     while True:
+
         try:
-            guess = get_guess()
+
+            guess, guessCount = get_guess(guessCount)
+
             if guess <= 0 or guess > 10:
                 print('Enter 1 - 10')
                 guess = get_guess()
             result = check_guess(guess, secret)
-            print(result)
 
             if result == correct:
+                print("It took {} guesses".format(guessCount))
                 break
         except ValueError:
             print('Error, only enter numbers')
-            
-        guess = get_guess()
+
+            guess = get_guess()
         result = check_guess(guess, secret)
         print(result)
 
