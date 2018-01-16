@@ -7,7 +7,17 @@ too_high = 'too high'
 
 def configure_range():
     '''Set the high and low values for the random number'''
-    return 1, 10
+    while True:
+        try:
+            low = int(input("Enter the minimum number to guess\n"))
+            high = int(input("Enter the maximum number to guess\n"))
+            if high <= low:
+                high = int(input("Enter a higher number\n"))
+            return low, high
+            break
+        except ValueError:
+            print("Numbers only please and thankyou")
+
 
 
 def generate_secret(low, high):
