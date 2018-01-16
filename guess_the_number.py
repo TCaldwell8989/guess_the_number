@@ -26,9 +26,19 @@ def check_guess(guess, secret):
     if guess == secret:
         return correct
     if guess < secret:
-        return too_low
+        return Too_Low
     if guess > secret:
         return too_high
+
+def playAgain():
+    userInput = input('Enter Y to play again, N to close:\n')
+    if userInput != 'Y' or userInput != 'N':
+        userInput = input('Please Enter Y or N\n')
+    if userInput == 'Y':
+        return True
+    elif userInput == 'N':
+        return False
+
 
 
 def main():
@@ -46,21 +56,23 @@ def main():
 
             if guess <= 0 or guess > 10:
                 print('Enter 1 - 10')
-                guess = get_guess()
+                guess = int(input('Guess the secret number? '))
+
             result = check_guess(guess, secret)
+            print(result)
 
             if result == correct:
                 print("It took {} guesses".format(guessCount))
-                break
+                if playAgain():
+                    guessCount = 0
+                    secret = generate_secret(low, high)
+                else:
+                    break
+
         except ValueError:
             print('Error, only enter numbers')
 
-            guess = get_guess()
-        result = check_guess(guess, secret)
-        print(result)
 
-        if result == correct:
-            break
 
 
 if __name__ == '__main__':
