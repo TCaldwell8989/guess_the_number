@@ -39,7 +39,7 @@ def main():
         try:
             guess = get_guess()
             if guess <= 0 or guess > 10:
-                print('Only enter 1 - 10')
+                print('Enter 1 - 10')
                 guess = get_guess()
             result = check_guess(guess, secret)
             print(result)
