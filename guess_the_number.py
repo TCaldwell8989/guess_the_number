@@ -14,7 +14,6 @@ def configure_range():
             if high <= low:
                 high = int(input("Enter a higher number\n"))
             return low, high
-            break
         except ValueError:
             print("Numbers only please and thankyou")
 
