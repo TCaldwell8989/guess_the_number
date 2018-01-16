@@ -48,7 +48,13 @@ def main():
                 break
         except ValueError:
             print('Error, only enter numbers')
+            
+        guess = get_guess()
+        result = check_guess(guess, secret)
+        print(result)
 
+        if result == correct:
+            break
 
 
 if __name__ == '__main__':
